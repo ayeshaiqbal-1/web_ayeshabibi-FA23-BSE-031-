@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Using If condition</title>
+
+<script language="javascript">
+function playGame() {
+    var res = Math.round(Math.random() * 10);
+    var num = prompt("Please enter a number", 0);
+    
+    if (num == res) {
+        document.write("You Won");
+    } else {
+        document.write("Your loss, correct Answer is " + res);
+    }
+}
+</script>
+</head>
+<body>
+    <button onclick="playGame()">Play Game</button>
+</body>
+</html>

@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Tasks - Lab 07</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        .task-container {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        h2 {
+            color: #333;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+        
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            margin: 5px;
+        }
+        
+        button:hover {
+            background-color: #0056b3;
+        }
+        
+        .output {
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+            padding: 10px;
+            margin-top: 10px;
+            min-height: 20px;
+        }
+        
+        input, textarea {
+            padding: 8px;
+            margin: 5px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            width: 200px;
+        }
+        
+        .error {
+            color: #dc3545;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+        
+        .success {
+            color: #28a745;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>JavaScript Tasks - Lab 07</h1>
+    
+    <!-- Task 1-3: Number Sum -->
+    <div class="task-container">
+        <h2>Task 1: Sum of Numbers</h2>
+        <p>Enter numbers (enter 0 to stop and get sum)</p>
+        <button onclick="startSumCalculator()">Start Number Entry</button>
+        <div class="output" id="sumOutput"></div>
+    </div>
+    
+    <!-- Task 2: Quiz Question -->
+    <div class="task-container">
+        <h2>Task 2: Quiz Question</h2>
+        <p>Answer this question: What is the capital of France?</p>
+        <button onclick="askQuestion()">Answer Question</button>
+        <div class="output" id="quizOutput"></div>
+    </div>
+    
+    <!-- Task 3: Repeat Message -->
+    <div class="task-container">
+        <h2>Task 3: Repeat Message</h2>
+        <button onclick="repeatMessage()">Enter Message and Number</button>
+        <div class="output" id="repeatOutput"></div>
+    </div>
+    
+    <!-- Task 4: Signup Form Validation -->
+    <div class="task-container">
+        <h2>Task 4: Signup Form Validation</h2>
+        <form id="signupForm" onsubmit="return validateForm(event)">
+            <div>
+                <label>Full Name:</label><br>
+                <input type="text" id="name" placeholder="Enter full name">
+                <div class="error" id="nameError"></div>
+            </div>
+            
+            <div>
+                <label>Email:</label><br>
+                <input type="email" id="email" placeholder="Enter email">
+                <div class="error" id="emailError"></div>
+            </div>
+            
+            <div>
+                <label>Password:</label><br>
+                <input type="password" id="password" placeholder="Enter password">
+                <div class="error" id="passwordError"></div>
+            </div>
+            
+            <div>
+                <label>Confirm Password:</label><br>
+                <input type="password" id="confirmPassword" placeholder="Confirm password">
+                <div class="error" id="confirmPasswordError"></div>
+            </div>
+            
+            <div>
+                <label>Age:</label><br>
+                <input type="number" id="age" placeholder="Enter age">
+                <div class="error" id="ageError"></div>
+            </div>
+            
+            <div>
+                <label>Phone Number:</label><br>
+                <input type="tel" id="phone" placeholder="Enter phone number">
+                <div class="error" id="phoneError"></div>
+            </div>
+            
+            <button type="submit">Sign Up</button>
+            <button type="reset">Reset</button>
+        </form>
+        <div class="output" id="formOutput"></div>
+    </div>
+
+    <script>
+        // Task 1: Sum Calculator
+        function startSumCalculator() {
+            let sum = 0;
+            let numbers = [];
+            
+            while (true) {
+                let input = prompt("Enter a number (or 0 to stop and get sum):");
+                
+                // Check if user clicked cancel
+                if (input === null) {
+                    document.getElementById('sumOutput').innerHTML = "Operation cancelled by user.";
+                    return;
+                }
+                
+                // Convert to number
+                let num = Number(input);
+                
+                // Check if it's a valid number
+                if (isNaN(num)) {
+                    alert("Please enter a valid number!");
+                    continue;
+                }
+                
+                // Check if it's zero
+                if (num === 0) {
+                    break;
+                }
+                
+                sum += num;
+                numbers.push(num);
+            }
+            
+            // Display the result
+            let resultText = "Numbers entered: " + (numbers.length > 0 ? numbers.join(", ") : "None") + "<br>";
+            resultText += "Total sum: " + sum;
+            
+            document.getElementById('sumOutput').innerHTML = resultText;
+        }
+        
+        // Task 2: Quiz Question
+        function askQuestion() {
+            const question = "What is the capital of France?";
+            const correctAnswer = "Paris";
+            
+            let answer = prompt(question);
+            
+            if (answer === null) {
+                document.getElementById('quizOutput').innerHTML = "Question cancelled.";
+                return;
+            }
+            
+            // Case-insensitive comparison
+            if (answer.trim().toLowerCase() === correctAnswer.toLowerCase()) {
+                document.getElementById('quizOutput').innerHTML = "✅ Correct! Well done!";
+                alert("Success! That's the right answer.");
+            } else {
+                document.getElementById('quizOutput').innerHTML = "❌ Sorry, that's incorrect. The capital of France is Paris.";
+                alert("Error! Wrong answer. Try again!");
+            }
+        }
+        
+        // Task 3: Repeat Message
+        function repeatMessage() {
+            // Get message
+            let message = prompt("Enter a message to display:");
+            
+            if (message === null) {
+                document.getElementById('repeatOutput').innerHTML = "Operation cancelled.";
+                return;
+            }
+            
+            // Get number of times
+            let numInput = prompt("How many times should this message be displayed?");
+            
+            if (numInput === null) {
+                document.getElementById('repeatOutput').innerHTML = "Operation cancelled.";
+                return;
+            }
+            
+            let times = Number(numInput);
+            
+            // Validate number
+            if (isNaN(times) || times <= 0) {
+                document.getElementById('repeatOutput').innerHTML = "Please enter a valid positive number.";
+                return;
+            }
+            
+            // Display message multiple times
+            let output = "";
+            for (let i = 1; i <= times; i++) {
+                output += i + ". " + message + "<br>";
+            }
+            
+            document.getElementById('repeatOutput').innerHTML = output;
+        }
+        
+        // Task 4: Signup Form Validation
+        function validateForm(event) {
+            event.preventDefault(); // Prevent form submission
+            
+            // Clear previous error messages
+            clearErrors();
+            
+            // Get form values
+            let name = document.getElementById('name').value.trim();
+            let email = document.getElementById('email').value.trim();
+            let password = document.getElementById('password').value;
+            let confirmPassword = document.getElementById('confirmPassword').value;
+            let age = document.getElementById('age').value;
+            let phone = document.getElementById('phone').value.trim();
+            
+            let isValid = true;
+            
+            // Validate Name
+            if (name === "") {
+                document.getElementById('nameError').innerHTML = "Name is required";
+                isValid = false;
+            } else if (name.length < 2) {
+                document.getElementById('nameError').innerHTML = "Name must be at least 2 characters";
+                isValid = false;
+            }
+            
+            // Validate Email
+            let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (email === "") {
+                document.getElementById('emailError').innerHTML = "Email is required";
+                isValid = false;
+            } else if (!emailPattern.test(email)) {
+                document.getElementById('emailError').innerHTML = "Please enter a valid email address";
+                isValid = false;
+            }
+            
+            // Validate Password
+            if (password === "") {
+                document.getElementById('passwordError').innerHTML = "Password is required";
+                isValid = false;
+            } else if (password.length < 6) {
+                document.getElementById('passwordError').innerHTML = "Password must be at least 6 characters";
+                isValid = false;
+            }
+            
+            // Validate Confirm Password
+            if (confirmPassword === "") {
+                document.getElementById('confirmPasswordError').innerHTML = "Please confirm your password";
+                isValid = false;
+            } else if (password !== confirmPassword) {
+                document.getElementById('confirmPasswordError').innerHTML = "Passwords do not match";
+                isValid = false;
+            }
+            
+            // Validate Age
+            if (age === "") {
+                document.getElementById('ageError').innerHTML = "Age is required";
+                isValid = false;
+            } else {
+                let ageNum = Number(age);
+                if (isNaN(ageNum) || ageNum < 18 || ageNum > 120) {
+                    document.getElementById('ageError').innerHTML = "Age must be between 18 and 120";
+                    isValid = false;
+                }
+            }
+            
+            // Validate Phone (optional, but if entered must be valid)
+            if (phone !== "") {
+                let phonePattern = /^[\d\s\-\(\)]{10,}$/;
+                let digitsOnly = phone.replace(/\D/g, '');
+                if (digitsOnly.length < 10) {
+                    document.getElementById('phoneError').innerHTML = "Phone number must have at least 10 digits";
+                    isValid = false;
+                }
+            }
+            
+            // Show result
+            if (isValid) {
+                document.getElementById('formOutput').innerHTML = "✅ Form validation successful! All fields are valid.";
+                document.getElementById('formOutput').className = "output success";
+            } else {
+                document.getElementById('formOutput').innerHTML = "❌ Form validation failed. Please check the errors above.";
+                document.getElementById('formOutput').className = "output error";
+            }
+            
+            return false; // Prevent actual form submission
+        }
+        
+        // Helper function to clear all error messages
+        function clearErrors() {
+            let errorFields = ['nameError', 'emailError', 'passwordError', 'confirmPasswordError', 'ageError', 'phoneError'];
+            errorFields.forEach(field => {
+                document.getElementById(field).innerHTML = "";
+            });
+            
+            let formOutput = document.getElementById('formOutput');
+            formOutput.innerHTML = "";
+            formOutput.className = "output";
+        }
+        
+        // Bonus: Add real-time validation for better user experience
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add input event listeners for real-time validation hints
+            let emailInput = document.getElementById('email');
+            if (emailInput) {
+                emailInput.addEventListener('input', function() {
+                    let email = this.value.trim();
+                    if (email !== "" && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                        document.getElementById('emailError').innerHTML = "Invalid email format";
+                    } else {
+                        document.getElementById('emailError').innerHTML = "";
+                    }
+                });
+            }
+            
+            let passwordInput = document.getElementById('password');
+            if (passwordInput) {
+                passwordInput.addEventListener('input', function() {
+                    if (this.value.length > 0 && this.value.length < 6) {
+                        document.getElementById('passwordError').innerHTML = "Password too short";
+                    } else {
+                        document.getElementById('passwordError').innerHTML = "";
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>A demonstration of how to access a number field</h3>
+    <input type="number" id="mynumber" value="2">
+    <p>click the button to get the number </p>
+    <button onclick="tryit()">Try it</button>
+    <p id="displayArea"></p>
+
+    <script>
+        function tryit() {
+            const numberInput = document.getElementById('myNumber');
+    
+    const enteredValue = numberInput.value;
+    
+    document.getElementById('displayArea').innerHTML = 
+        'You entered: ' + enteredValue;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animal History Carousel</title>
+    <!-- Bootstrap min CSS only -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap.min.css">
+    <style>
+        .animal-card {
+            padding: 20px;
+            margin-bottom: 20px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+        }
+        
+        .slider-container {
+            position: relative;
+            margin: 20px 0;
+        }
+        
+        .slider-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        
+        .slider-controls {
+            text-align: center;
+            margin-top: 15px;
+        }
+        
+        .slider-btn {
+            padding: 10px 20px;
+            margin: 0 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .slider-btn:hover {
+            background-color: #0056b3;
+        }
+        
+        .slider-btn.pause {
+            background-color: #dc3545;
+        }
+        
+        .slider-btn.pause:hover {
+            background-color: #c82333;
+        }
+        
+        .animal-history-banner {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+            margin-bottom: 30px;
+            border-radius: 8px;
+        }
+        
+        /* Responsive image and description layout */
+        @media (max-width: 576px) {
+            .animal-image {
+                margin-bottom: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Animal History Banner Section -->
+        <div class="row">
+            <div class="col-12">
+                <div class="animal-history-banner">
+                    <h1>Animal History Through Ages</h1>
+                    <p class="lead">Discover the fascinating journey of animals throughout history</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Image Slider Section -->
+        <div class="row">
+            <div class="col-12">
+                <div class="slider-container">
+                    <img id="slider" class="slider-image" src="https://images.unsplash.com/photo-1546182990-dffeafbe841d?w=1200" alt="Animal Slider">
+                    <div class="slider-controls">
+                        <button class="slider-btn" onclick="playSlider()">Play</button>
+                        <button class="slider-btn pause" onclick="pauseSlider()">Pause</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Animal Description Sections - Layout changes with screen size -->
+        <!-- Lion Section - Image left on large, top on small -->
+        <div class="row animal-card">
+            <div class="col-12 col-md-6 order-2 order-md-1">
+                <h2>African Lion - The King of Beasts</h2>
+                <p>Lions have roamed the African savannas for over 2 million years. These majestic creatures have been symbols of strength and courage in human culture since ancient times. From the caves of Lascaux to the thrones of medieval kings, lions have captured our imagination and respect.</p>
+                <p>Historical evidence shows that lions once ranged across most of Africa, parts of Europe, and Asia. They were featured in ancient Egyptian hieroglyphics, Roman colosseums, and Persian art.</p>
+            </div>
+            <div class="col-12 col-md-6 order-1 order-md-2">
+                <img src="https://images.unsplash.com/photo-1546182990-dffeafbe841d?w=600" alt="Lion" class="img-fluid rounded animal-image">
+            </div>
+        </div>
+
+        <!-- Elephant Section - Image right on large, top on small -->
+        <div class="row animal-card">
+            <div class="col-12 col-md-6">
+                <img src="https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?w=600" alt="Elephant" class="img-fluid rounded animal-image">
+            </div>
+            <div class="col-12 col-md-6">
+                <h2>African Elephant - Gentle Giants</h2>
+                <p>Elephants have walked the Earth for over 5 million years. These intelligent creatures have played significant roles in human history, from war elephants in ancient Carthage to working animals in Southeast Asian logging operations.</p>
+                <p>Throughout history, elephants have been revered in many cultures. In Hindu mythology, the elephant-headed god Ganesha is worshipped as the remover of obstacles. African tribes have incorporated elephants into their folklore for centuries.</p>
+            </div>
+        </div>
+
+        <!-- Dolphin Section - Image left on large, top on small -->
+        <div class="row animal-card">
+            <div class="col-12 col-md-6 order-2 order-md-1">
+                <h2>Dolphins - Intelligent Mariners</h2>
+                <p>Dolphins have inhabited Earth's oceans for over 10 million years. These highly intelligent marine mammals have fascinated humans since ancient times. Greek mythology tells stories of dolphins saving sailors and guiding ships.</p>
+                <p>Ancient Minoan art from Crete (1600 BCE) depicts dolphins, showing our long-standing relationship with these creatures. Modern research continues to reveal their complex social structures and communication abilities.</p>
+            </div>
+            <div class="col-12 col-md-6 order-1 order-md-2">
+                <img src="https://images.unsplash.com/photo-1570481662006-a3a1374699e8?w=600" alt="Dolphin" class="img-fluid rounded animal-image">
+            </div>
+        </div>
+
+        <!-- Tiger Section - Image right on large, top on small -->
+        <div class="row animal-card">
+            <div class="col-12 col-md-6">
+                <img src="https://images.unsplash.com/photo-1547483230-d85883f340c0?w=600" alt="Tiger" class="img-fluid rounded animal-image">
+            </div>
+            <div class="col-12 col-md-6">
+                <h2>Bengal Tiger - Striped Hunters</h2>
+                <p>Tigers have existed for about 2 million years, evolving into the largest of all big cats. These magnificent predators have been deeply woven into Asian culture, from the Chinese zodiac to Hindu mythology.</p>
+                <p>The tiger has been a symbol of power and protection in many Eastern cultures. In Korea, tigers are seen as guardians; in India, the tiger goddess Durga rides a tiger into battle. Today, they face extinction threats from habitat loss and poaching.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Image Slider JavaScript
+        const sliderImages = [
+            'https://images.unsplash.com/photo-1546182990-dffeafbe841d?w=1200', // Lion
+            'https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?w=1200', // Elephant
+            'https://images.unsplash.com/photo-1570481662006-a3a1374699e8?w=1200', // Dolphin
+            'https://images.unsplash.com/photo-1547483230-d85883f340c0?w=1200', // Tiger
+            'https://images.unsplash.com/photo-1557008075-4a1c75dd3c7c?w=1200'  // Wolf
+        ];
+        
+        let currentIndex = 0;
+        let sliderInterval;
+        let isPlaying = true;
+        const sliderElement = document.getElementById('slider');
+        
+        // Function to change slider image
+        function changeSlide() {
+            currentIndex = (currentIndex + 1) % sliderImages.length;
+            sliderElement.src = sliderImages[currentIndex];
+        }
+        
+        // Start the slider
+        function startSlider() {
+            if (sliderInterval) {
+                clearInterval(sliderInterval);
+            }
+            sliderInterval = setInterval(changeSlide, 3000); // Change image every 3 seconds
+            isPlaying = true;
+        }
+        
+        // Play slider function
+        function playSlider() {
+            if (!isPlaying) {
+                startSlider();
+            }
+        }
+        
+        // Pause slider function
+        function pauseSlider() {
+            if (isPlaying) {
+                clearInterval(sliderInterval);
+                sliderInterval = null;
+                isPlaying = false;
+            }
+        }
+        
+        // Initialize slider when page loads
+        window.onload = function() {
+            startSlider();
+        };
+    </script>
+</body>
+</html>

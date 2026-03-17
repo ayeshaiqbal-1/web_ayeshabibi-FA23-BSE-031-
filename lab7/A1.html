@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>Click the button to wait 3 seconds, then Msg is displayed.</p>
+
+    <p id="demo"></p>
+
+    <button onclick="myFunction()">Try it</button>
+
+    <script>
+        var myVar;
+
+        function myFunction() {
+            myVar = setTimeout(MsgFunc, 3000);
+        }
+
+        function MsgFunc() {
+            document.getElementById("demo").innerHTML = "This text is displayed after three seconds";
+        }
+    </script>
+</body>
+</html>
