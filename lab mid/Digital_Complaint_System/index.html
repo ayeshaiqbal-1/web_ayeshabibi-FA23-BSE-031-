@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ComplaitGuard | Digital Complaint Management System</title>
+    <meta name="description" content="A seamless and efficient way to register and track your complaints online.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <a href="index.html" class="nav-logo">
+            <i class="fas fa-shield-alt"></i> ComplaintGuard
+        </a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="complaint.html">Register Complaint</a></li>
+            <li><a href="track.html">Track Status</a></li>
+            <li><a href="admin.html">Admin Dashboard</a></li>
+        </ul>
+        <div class="nav-actions">
+            <button id="themeToggle" class="theme-toggle">
+                <i class="fas fa-moon"></i>
+            </button>
+            <a href="complaint.html" class="btn btn-primary">Get Started</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="container animate-fade">
+            <h1>Resolve Issues with <br> Confidence & Speed</h1>
+            <p>Our Digital Complaint Management System provides a transparent, reliable, and efficient way to voice your concerns and track their resolution in real-time.</p>
+            <div class="btn-group">
+                <a href="complaint.html" class="btn btn-primary btn-lg">
+                    <i class="fas fa-plus-circle"></i> File a Complaint
+                </a>
+                <a href="track.html" class="btn btn-outline btn-lg">
+                    <i class="fas fa-search"></i> Track Existing
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <section class="features">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 3rem;">How it Works</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
+                <div class="card" style="padding: 2rem; background: var(--card-bg); border-radius: var(--radius); border: 1px solid var(--border-color); text-align: center;">
+                    <i class="fas fa-edit" style="font-size: 2.5rem; color: var(--primary-color); margin-bottom: 1rem;"></i>
+                    <h3>Submit</h3>
+                    <p>Fill out our simple form with your details and description of the issue.</p>
+                </div>
+                <div class="card" style="padding: 2rem; background: var(--card-bg); border-radius: var(--radius); border: 1px solid var(--border-color); text-align: center;">
+                    <i class="fas fa-clock" style="font-size: 2.5rem; color: var(--secondary-color); margin-bottom: 1rem;"></i>
+                    <h3>Track</h3>
+                    <p>Use your unique Complaint ID to check the real-time status of your request.</p>
+                </div>
+                <div class="card" style="padding: 2rem; background: var(--card-bg); border-radius: var(--radius); border: 1px solid var(--border-color); text-align: center;">
+                    <i class="fas fa-check-circle" style="font-size: 2.5rem; color: var(--success-color); margin-bottom: 1rem;"></i>
+                    <h3>Resolve</h3>
+                    <p>Our dedicated team reviews and resolves your issues as quickly as possible.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer style="padding: 3rem 2rem; border-top: 1px solid var(--border-color); text-align: center; margin-top: 4rem;">
+        <p>&copy; 2026 ComplaintGuard. All rights reserved.</p>
+    </footer>
+
+    <!-- Custom JS -->
+    <script src="js/script.js"></script>
+</body>
+</html>

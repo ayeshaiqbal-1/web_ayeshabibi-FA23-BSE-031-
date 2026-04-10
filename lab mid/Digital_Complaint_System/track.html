@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Track Complaint | ComplaintGuard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <a href="index.html" class="nav-logo">
+            <i class="fas fa-shield-alt"></i> ComplaintGuard
+        </a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="complaint.html">Register Complaint</a></li>
+            <li><a href="track.html" style="color: var(--primary-color)">Track Status</a></li>
+            <li><a href="admin.html">Admin Dashboard</a></li>
+        </ul>
+        <div class="nav-actions">
+            <button id="themeToggle" class="theme-toggle">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </nav>
+
+    <div class="container animate-fade">
+        <div style="text-align: center; margin: 4rem 0;">
+            <h1>Track Your Complaint</h1>
+            <p>Enter your Complaint ID or Registered Email to see the current status.</p>
+            
+            <div style="max-width: 600px; margin: 2rem auto; display: flex; gap: 0.5rem;">
+                <input type="text" id="trackInput" class="form-control" placeholder="e.g. CG-12345 or john@example.com">
+                <button id="trackBtn" class="btn btn-primary" style="padding: 0 2rem;">
+                    <i class="fas fa-search"></i> Track
+                </button>
+            </div>
+        </div>
+
+        <div id="trackResult" style="max-width: 800px; margin: 0 auto;">
+            <!-- Results will be injected here by JS -->
+            <div style="text-align: center; opacity: 0.5; padding: 3rem;">
+                <i class="fas fa-info-circle" style="font-size: 3rem; margin-bottom: 1rem;"></i>
+                <p>Search results will appear here.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer style="padding: 2rem; border-top: 1px solid var(--border-color); text-align: center; margin-top: 4rem;">
+        <p>&copy; 2026 ComplaintGuard. All rights reserved.</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
