@@ -48,3 +48,28 @@ Digital_Complaint_System/
 ## 📄 License
 
 This project is open-source and available under the MIT License.
+
+<img width="1920" height="981" alt="image" src="https://github.com/user-attachments/assets/fa59d93c-1d77-4bfb-8b4a-b720a46674ad" />
+
+<img width="1907" height="919" alt="image" src="https://github.com/user-attachments/assets/d997b400-726d-4588-9a08-310fc702d4a3" />
+
+<img width="1882" height="913" alt="image" src="https://github.com/user-attachments/assets/cf3d9cbe-ee1d-4ac7-b4a4-d8a1caeb5083" />
+
+<img width="1878" height="911" alt="image" src="https://github.com/user-attachments/assets/d20568ea-eb7a-40ad-a4dc-6e73b2d8daee" />
+
+<img width="1898" height="945" alt="image" src="https://github.com/user-attachments/assets/0923c306-a4fb-490c-9c5f-ca3aeb93844a" />
+
+<img width="1912" height="936" alt="image" src="https://github.com/user-attachments/assets/bdc37ed7-0ad4-4556-9e8b-58c2ab00e28a" />
+
+<img width="1909" height="1016" alt="image" src="https://github.com/user-attachments/assets/63eecf5d-2156-455c-aa05-bb6d095a215d" />
+
+<img width="1899" height="946" alt="image" src="https://github.com/user-attachments/assets/9e8ef121-984f-426e-9b3e-2fb97343b147" />
+
+<img width="1888" height="938" alt="image" src="https://github.com/user-attachments/assets/1af3af2f-a80e-4648-a99d-70a11be4f227" />
+
+
+
+
+
+
+
