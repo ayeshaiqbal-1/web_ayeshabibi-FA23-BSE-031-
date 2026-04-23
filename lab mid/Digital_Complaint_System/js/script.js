@@ -242,5 +242,35 @@ function showToast(message, type = 'info') {
     setTimeout(() => toast.remove(), 4000);
 }
 
+// AUTH UI HANDLING
+const updateAuthUI = () => {
+    const authActions = document.getElementById('authActions');
+    if (!authActions) return;
+
+    const user = JSON.parse(localStorage.getItem('cg_user'));
+    
+    if (user) {
+        authActions.innerHTML = `
+            <div style="display: flex; align-items: center; gap: 1rem;">
+                <span style="font-weight: 600; font-size: 0.9rem;">
+                    <i class="fas fa-user-circle"></i> ${user.name}
+                </span>
+                <button id="logoutBtn" class="btn btn-outline" style="padding: 0.5rem 1rem; font-size: 0.8rem;">Logout</button>
+            </div>
+        `;
+        document.getElementById('logoutBtn').addEventListener('click', () => {
+            localStorage.removeItem('cg_user');
+            showToast('Logged out successfully', 'info');
+            setTimeout(() => window.location.href = 'index.html', 1000);
+        });
+    } else {
+        authActions.innerHTML = `
+            <a href="login.html" class="btn btn-outline">Login</a>
+            <a href="complaint.html" class="btn btn-primary">Get Started</a>
+        `;
+    }
+};
+
 // Run Init
 initData();
+updateAuthUI();

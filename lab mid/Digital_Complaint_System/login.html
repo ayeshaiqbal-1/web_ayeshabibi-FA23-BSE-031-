@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | ComplaintGuard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .login-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 100vh;
+        }
+        .login-visual {
+            background: linear-gradient(135deg, var(--primary-color), #4f46e5);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 4rem;
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .login-visual::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%);
+            top: -50%;
+            left: -50%;
+            animation: rotate 20s linear infinite;
+        }
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .login-form-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 4rem;
+        }
+        .login-card {
+            width: 100%;
+            max-width: 450px;
+        }
+        .role-selector {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            background: var(--bg-color);
+            padding: 0.5rem;
+            border-radius: var(--radius);
+        }
+        .role-btn {
+            padding: 0.75rem;
+            border: none;
+            background: none;
+            font-weight: 700;
+            cursor: pointer;
+            border-radius: calc(var(--radius) - 4px);
+            transition: var(--transition);
+            color: var(--text-muted);
+        }
+        .role-btn.active {
+            background: white;
+            color: var(--primary-color);
+            box-shadow: var(--shadow-sm);
+        }
+        [data-theme="dark"] .role-btn.active {
+            background: var(--dark-card);
+            color: white;
+        }
+        @media (max-width: 992px) {
+            .login-wrapper { grid-template-columns: 1fr; }
+            .login-visual { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-wrapper">
+        <div class="login-visual">
+            <i class="fas fa-shield-alt" style="font-size: 5rem; margin-bottom: 2rem;"></i>
+            <h1 style="color: white; font-size: 3rem;">Welcome Back</h1>
+            <p style="color: rgba(255,255,255,0.8); font-size: 1.2rem;">Log in to access your complaints and track resolution progress.</p>
+        </div>
+        <div class="login-form-container">
+            <div class="login-card card animate-fade">
+                <div style="text-align: center; margin-bottom: 2rem;">
+                    <a href="index.html" class="nav-logo" style="justify-content: center; margin-bottom: 1rem;">
+                        <i class="fas fa-shield-alt"></i> ComplaintGuard
+                    </a>
+                    <p>Secure Access to Digital Resolution</p>
+                </div>
+
+                <div class="role-selector">
+                    <button class="role-btn active" id="userRole">User</button>
+                    <button class="role-btn" id="adminRole">Administrator</button>
+                </div>
+
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" class="form-control" placeholder="name@company.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" class="form-control" placeholder="••••••••" required>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                        <label style="display: flex; align-items: center; gap: 8px; font-size: 0.9rem; cursor: pointer;">
+                            <input type="checkbox"> Remember me
+                        </label>
+                        <a href="#" style="color: var(--primary-color); font-size: 0.9rem; font-weight: 600; text-decoration: none;">Forgot password?</a>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">Sign In</button>
+                </form>
+
+                <div style="margin-top: 2rem; text-align: center; color: var(--text-muted); font-size: 0.9rem;">
+                    Don't have an account? <a href="#" style="color: var(--primary-color); font-weight: 700; text-decoration: none;">Create one</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+    <script>
+        const roleBtns = document.querySelectorAll('.role-btn');
+        let currentRole = 'User';
+
+        roleBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                roleBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                currentRole = btn.textContent;
+            });
+        });
+
+        document.getElementById('loginForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            
+            // Simulated login
+            localStorage.setItem('cg_user', JSON.stringify({
+                email: email,
+                role: currentRole,
+                name: email.split('@')[0]
+            }));
+
+            showToast(`Logged in as ${currentRole}`, 'success');
+            
+            setTimeout(() => {
+                window.location.href = currentRole === 'Administrator' ? 'admin.html' : 'index.html';
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
